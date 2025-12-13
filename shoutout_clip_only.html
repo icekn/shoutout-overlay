@@ -2,17 +2,15 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Shoutout Clip Only</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
+      background: black;
       width: 100%;
       height: 100%;
-      background: transparent;
       overflow: hidden;
     }
-
     iframe {
       width: 100%;
       height: 100%;
@@ -22,35 +20,25 @@
 </head>
 <body>
 
-  <iframe
-    id="clip"
-    src=""
-    width="100%"
-    height="100%"
-    frameborder="0"
-    scrolling="no"
-    allow="autoplay; fullscreen"
-  ></iframe>
-  
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const clipId = params.get("clip");
+<iframe id="clip"></iframe>
 
-    if (clipId) {
-      const parents = [
-        "obs-browser",
-        "localhost",
-        "127.0.0.1"
-      ];
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const clipId = params.get("clip");
 
-      let src = "https://www.twitch.tv/embed?clip=" + clipId;
-      parents.forEach(p => {
-        src += "&parent=" + p;
-      });
+  if (clipId) {
+    const parents = ["obs-browser", "localhost", "127.0.0.1"];
+    let src = "https://clips.twitch.tv/embed?clip=" + clipId;
 
-      document.getElementById("clip").src = src;
-    }
-  </script>
+    parents.forEach(p => {
+      src += "&parent=" + p;
+    });
+
+    src += "&autoplay=true&muted=false";
+
+    document.getElementById("clip").src = src;
+  }
+</script>
 
 </body>
 </html>
