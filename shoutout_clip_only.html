@@ -2,13 +2,14 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <title>Shoutout Clip</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      background: black;
       width: 100%;
       height: 100%;
+      background: black;
       overflow: hidden;
     }
     iframe {
@@ -27,7 +28,13 @@
   const clipId = params.get("clip");
 
   if (clipId) {
-    const parents = ["obs-browser", "localhost", "127.0.0.1"];
+    const parents = [
+      "icekn.github.io",   // ⬅️ ESTE ERA EL QUE FALTABA
+      "obs-browser",
+      "localhost",
+      "127.0.0.1"
+    ];
+
     let src = "https://clips.twitch.tv/embed?clip=" + clipId;
 
     parents.forEach(p => {
